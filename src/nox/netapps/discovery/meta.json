@@ -1,0 +1,16 @@
+{
+    "components": [
+        {
+            "name": "discovery" ,
+            "library": "discovery" ,
+            "dependencies": [
+                "link event"
+            ],
+            "python": "nox.netapps.discovery.discovery" 
+        },
+        {
+            "name": "link event" ,
+            "library": "link_event"
+        }
+    ]
+}

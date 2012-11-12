@@ -100,7 +100,9 @@ std::map<std::string,std::pair<int,int> >fields = map_list_of ("in_port", std::m
                                   ("icmpv6_code",std::make_pair(OXM_OF_ICMPV6_CODE,1))
                                   ("ipv6_nd_target",std::make_pair(OXM_OF_IPV6_ND_TARGET,16))("ipv6_nd_tll",std::make_pair(OXM_OF_IPV6_ND_TLL,16))
                                   ("ipv6_nd_sll",std::make_pair(OXM_OF_IPV6_ND_SLL,16))
-                                  ("mpls_label",std::make_pair(OXM_OF_MPLS_LABEL,4))("mpls_tc",std::make_pair(OXM_OF_MPLS_TC,1));
+                                  ("mpls_label",std::make_pair(OXM_OF_MPLS_LABEL,4))("mpls_tc",std::make_pair(OXM_OF_MPLS_TC,1))
+                                  ("mpls_bos",std::make_pair(OXM_OF_MPLS_BOS,1))("pbb_isid",std::make_pair(OXM_OF_PBB_ISID,4))
+                                  ("tunnel_id",std::make_pair(OXM_OF_TUNNEL_ID,8))("exthdr",std::make_pair(OXM_OF_IPV6_EXTHDR,2));
 
 /* For each OXM_* field, define OFI_OXM_* as consecutive integers starting from
  * zero. */

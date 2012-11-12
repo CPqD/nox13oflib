@@ -40,6 +40,7 @@
 #include "ofl.h"
 #include "ofl-actions.h"
 #include "ofl-packets.h"
+#include "oxm-match.h"
 #include "../libopenflow/hash.h"
 #include "../libopenflow/hmap.h"
 #include "../libopenflow/byte-order.h"
@@ -415,7 +416,10 @@ void ofl_structs_match_put_masked(struct ofl_match *match, uint32_t header, T va
     struct ofl_match_tlv *m = (struct ofl_match_tlv *) malloc(sizeof (struct ofl_match_tlv));
     int len = sizeof(value);
 
-    m->header = header;
+    /*set the masked bit */
+    m->header |= 1 << 8;
+    /* multiply the header len by 2 */
+    m->header |= (header && 0xff) << 1;
     m->value = (uint8_t*) malloc(len*2);
     memcpy(m->value, &value, len);
     memcpy(m->value + len, &mask, len);

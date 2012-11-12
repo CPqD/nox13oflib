@@ -82,8 +82,7 @@ Instruction::CreateWriteMetadata(uint64_t metadata, uint64_t metadata_mask){
     insts[inst_num-1] = (struct ofl_instruction_header *)i;
     
 }
-
-    
+ 
 void 
 Instruction::CreateClearActions(){
     inst_num++;
@@ -91,6 +90,18 @@ Instruction::CreateClearActions(){
     struct ofl_instruction_header *i = (struct ofl_instruction_header*) xmalloc(sizeof(struct ofl_instruction_header));
     i->type = OFPIT_CLEAR_ACTIONS;
     insts[inst_num-1] = (struct ofl_instruction_header *)i;
+}
+
+void
+Instruction::CreateMeterInstruction(uint32_t meter_id){
+
+    inst_num++;
+    insts = (struct ofl_instruction_header **) xrealloc(insts, sizeof(struct ofl_instruction_header**) * inst_num );
+    struct ofl_instruction_meter *i = (struct ofl_instruction_meter*) xmalloc(sizeof(struct ofl_instruction_meter));
+    i->header.type = OFPIT_METER;
+    i->meter_id = meter_id;
+    insts[inst_num-1] = (struct ofl_instruction_header *)i;
+
 }
 
 void 

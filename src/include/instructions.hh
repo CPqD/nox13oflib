@@ -33,6 +33,9 @@ public:
     void 
     CreateClearActions();
     
+    void
+    CreateMeterInstruction(uint32_t meter_id);
+    
     void 
     AddActions(struct ofl_instruction_actions *i, Actions *actions);
 };

@@ -14,11 +14,6 @@ The controller connects to the datapath without problems and an example applicat
 What is missing so far?
 - Multiple connections support
 
-- Add to the API OpenFlow 1.3 OXM fields. (It's possible to use this fields, but you will need
-to build the message using the oflib).
-
-- Meter instruction on the API (Again, it is still possible to build a flow mod message with oflib and include meter)
-
 - Some messages changed in OpenFlow 1.3 (e.g ofp_features_request do not carry port stats anymore). We need to look
 better how this affects the controller (This may mean lots of redesigning...).  
 

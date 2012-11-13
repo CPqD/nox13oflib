@@ -36,7 +36,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#include "../include/openflow.h"
+#include "../include/openflow/openflow.h"
 #include "ofl.h"
 #include "ofl-structs.h"
 #include "ofl-actions.h"

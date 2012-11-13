@@ -36,7 +36,7 @@
 #include <stdio.h>
 
 #include <netinet/icmp6.h>
-#include "../include/openflow.h"
+#include "../include/openflow/openflow.h"
 #include "ofl.h"
 #include "ofl-actions.h"
 #include "ofl-packets.h"

@@ -36,8 +36,8 @@ Ofp_msg_event::get_name(enum ofp_type type) {
         case OFPT_PACKET_IN: { return std::string("Packet_in_event"); }
         case OFPT_BARRIER_REPLY: { return std::string("Barrier_reply_event"); }
         case OFPT_QUEUE_GET_CONFIG_REPLY: { return std::string("Queue_get_config_reply_event"); }
-        case OFPT_ROLE_REPLY: { return std::string("Role_reply_event");
-        case OFPT_GET_ASYNC_REPLY: { return std::string("Async_reply_event");
+        case OFPT_ROLE_REPLY: { return std::string("Role_reply_event"); }
+        case OFPT_GET_ASYNC_REPLY: { return std::string("Async_reply_event"); }
 
         case OFPT_FEATURES_REQUEST:
         case OFPT_GET_CONFIG_REQUEST:

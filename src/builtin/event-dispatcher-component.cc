@@ -87,6 +87,11 @@ EventDispatcherComponent::EventDispatcherComponent(const Context* c,
     register_event(Ofp_msg_event::get_stats_name(OFPMP_QUEUE));
     register_event(Ofp_msg_event::get_stats_name(OFPMP_GROUP));
     register_event(Ofp_msg_event::get_stats_name(OFPMP_GROUP_DESC));
+    register_event(Ofp_msg_event::get_stats_name(OFPMP_GROUP_FEATURES));     
+    register_event(Ofp_msg_event::get_stats_name(OFPMP_METER)); 
+    register_event(Ofp_msg_event::get_stats_name(OFPMP_METER_CONFIG));   
+    register_event(Ofp_msg_event::get_stats_name(OFPMP_TABLE_FEATURES));   
+    register_event(Ofp_msg_event::get_stats_name(OFPMP_PORT_DESC));         
     register_event(Ofp_msg_event::get_name(OFPT_BARRIER_REPLY));
     register_event(Ofp_msg_event::get_name(OFPT_QUEUE_GET_CONFIG_REPLY));
 

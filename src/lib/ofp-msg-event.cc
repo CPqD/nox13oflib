@@ -36,6 +36,8 @@ Ofp_msg_event::get_name(enum ofp_type type) {
         case OFPT_PACKET_IN: { return std::string("Packet_in_event"); }
         case OFPT_BARRIER_REPLY: { return std::string("Barrier_reply_event"); }
         case OFPT_QUEUE_GET_CONFIG_REPLY: { return std::string("Queue_get_config_reply_event"); }
+        case OFPT_ROLE_REPLY: { return std::string("Role_reply_event");
+        case OFPT_GET_ASYNC_REPLY: { return std::string("Async_reply_event");
 
         case OFPT_FEATURES_REQUEST:
         case OFPT_GET_CONFIG_REQUEST:
@@ -48,6 +50,10 @@ Ofp_msg_event::get_name(enum ofp_type type) {
         case OFPT_MULTIPART_REPLY:
         case OFPT_BARRIER_REQUEST:
         case OFPT_QUEUE_GET_CONFIG_REQUEST:
+        case OFPT_ROLE_REQUEST:
+        case OFPT_GET_ASYNC_REQUEST:
+        case OFPT_SET_ASYNC:
+        case OFPT_METER_MOD:
         default: {
             //TODO Log
             return std::string("");
@@ -67,6 +73,12 @@ Ofp_msg_event::get_stats_name(enum ofp_multipart_types type) {
         case OFPMP_QUEUE: { return std::string("Queue_stats_in_event"); }
         case OFPMP_GROUP: { return std::string("Group_stats_in_event"); }
         case OFPMP_GROUP_DESC: { return std::string("Group_desc_stats_in_event"); }
+        case OFPMP_GROUP_FEATURES: { return std::string("Group_features_in_event"); }
+        case OFPMP_METER: { return std::string("Meter_stats_in_event"); }
+        case OFPMP_METER_CONFIG: { return std::string("Meter_configuration_in_event"); }
+        case OFPMP_METER_FEATURES: { return std::string("Meter_features_in_event"); }
+        case OFPMP_TABLE_FEATURES: { return std::string("Table_features_in_event"); }
+        case OFPMP_PORT_DESC: { return std::string("Port_desc_in_event"); }
         case OFPMP_EXPERIMENTER: { return std::string("Experimenter_stats_in_event"); }
         default: {
             //TODO Log

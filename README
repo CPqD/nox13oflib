@@ -47,7 +47,7 @@ To build, run the following commands in the of11softswitch directory:
 
     ./boot.sh
     mkdir build
-    ../configure
+    ../configure --with-python=no
     make
 
 

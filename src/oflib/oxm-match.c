@@ -316,7 +316,9 @@ parse_oxm_entry(struct ofl_match *match, const struct oxm_field *f,
             /* IP header. */
         case OFI_OXM_OF_IP_DSCP:{
             uint8_t *v = (uint8_t*) value;
-            if (*v & 0x03) {
+            if (*v & 0xc0) {
+                    printf("Error \n");
+
                 return ofp_mkerr(OFPET_BAD_MATCH, OFPBMC_BAD_VALUE);
             }
             else{
@@ -448,6 +450,7 @@ parse_oxm_entry(struct ofl_match *match, const struct oxm_field *f,
         case N_OXM_FIELDS:
             NOT_REACHED();
     }
+
     NOT_REACHED();
 }
  /*hmap_insert(match_dst, &f->hmap_node,
@@ -489,7 +492,7 @@ oxm_pull_match(struct ofpbuf *buf, struct ofl_match * match_dst, int match_len)
         else if (!oxm_prereqs_ok(f, match_dst)) {
             error = ofp_mkerr(OFPET_BAD_MATCH, OFPBMC_BAD_PREREQ);
         }
-        else if (check_oxm_dup(match_dst,f)){
+        else if (check_oxm_dup(match_dst,f)){            
             error = ofp_mkerr(OFPET_BAD_MATCH, OFPBMC_DUP_FIELD);
         }
         else {
@@ -505,6 +508,7 @@ oxm_pull_match(struct ofpbuf *buf, struct ofl_match * match_dst, int match_len)
                         OXM_VENDOR(header), OXM_FIELD(header),
                         OXM_HASMASK(header), OXM_TYPE(header),
                         error);
+
             return error;
         }
         p += 4 + length;
@@ -519,7 +523,6 @@ oxm_entry_ok(const void *p, unsigned int match_len)
 {
     unsigned int payload_len;
     uint32_t header;
-    
     if (match_len < 4) {
         if (match_len) {
             VLOG_DBG(LOG_MODULE,"oxm_match ends with partial oxm_header");

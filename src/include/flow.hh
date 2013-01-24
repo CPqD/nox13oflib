@@ -105,11 +105,12 @@ public:
      struct ofl_match_tlv *omt;
      HMAP_FOR_EACH_WITH_HASH(omt, struct ofl_match_tlv, hmap_node, hash_int(fields[name].first, 0),
           &match.match_fields){
-		  memcpy(value, omt->value, ETH_ADDR_LEN);
+          memcpy(value, omt->value, ETH_ADDR_LEN);
           return;   
      }
-     /* Field is not present in the packet */
-     *value = -1;
+      if (!strcmp("eth_src", name.c_str()))
+         /* Field is not present in the packet */
+         *value = -1;
   }
   /** \brief String representation
    */

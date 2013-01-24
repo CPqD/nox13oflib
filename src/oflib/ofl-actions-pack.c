@@ -187,7 +187,6 @@ ofl_actions_pack(struct ofl_action_header *src, struct ofp_action_header *dst, u
 
             da->len =    htons(sizeof(struct ofp_action_nw_ttl));
             da->nw_ttl = sa->nw_ttl;
-            printf("ntohl");
             memset(da->pad, 0x00, 3);
             return sizeof(struct ofp_action_nw_ttl);
         }
@@ -218,8 +217,13 @@ ofl_actions_pack(struct ofl_action_header *src, struct ofp_action_header *dst, u
                     break;
                 }
                 case 4:{
-                    uint32_t value = htonl(*((uint32_t*) sa->field->value));
-                    memcpy(data + (sizeof(struct ofp_action_set_field)),&value,OXM_LENGTH(sa->field->header));
+                    uint32_t value; 
+					uint8_t field = OXM_FIELD(sa->field->header);					
+					if( field != 11 && field != 12 && field != 22 && field != 23) 
+						value = htonl(*((uint32_t*) sa->field->value));
+					else  
+						value = *((uint32_t*) sa->field->value);                   
+					memcpy(data + (sizeof(struct ofp_action_set_field)), &value, OXM_LENGTH(sa->field->header));
                     break;
                 }
                 case 8:{

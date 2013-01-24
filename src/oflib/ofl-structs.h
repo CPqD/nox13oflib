@@ -403,7 +403,7 @@ struct ofl_meter_features {
 template <typename T>
 void ofl_structs_match_put(struct ofl_match *match, uint32_t header, T value){
     struct ofl_match_tlv *m = (struct ofl_match_tlv *) malloc(sizeof (struct ofl_match_tlv));
-    int len = sizeof(value);
+    int len = ((header) & 0xff);
     m->header = header;
     m->value = (uint8_t*) malloc(len);
     memcpy(m->value, &value, len);
@@ -414,7 +414,7 @@ void ofl_structs_match_put(struct ofl_match *match, uint32_t header, T value){
 template <typename T>
 void ofl_structs_match_put_masked(struct ofl_match *match, uint32_t header, T value, T mask){
     struct ofl_match_tlv *m = (struct ofl_match_tlv *) malloc(sizeof (struct ofl_match_tlv));
-    int len = sizeof(value);
+    int len = ((header) & 0xff);
 
     /*set the masked bit */
     m->header |= 1 << 8;

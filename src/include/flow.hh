@@ -66,7 +66,7 @@ public:
     if(!fields.count(name))
        std::cout <<"Match field: "<< name << " is not supported "<< std::endl;
     else {
-       ofl_structs_match_put_masked(&this->match, fields[name].first, value, mask);
+       ofl_structs_match_put_masked(&this->match, OXM_MAKE_WILD_HEADER(fields[name].first), value, mask);
     }
   }
 
@@ -84,7 +84,7 @@ public:
     if(!fields.count(name))
        std::cout <<"Match field: "<< name << " is not supported "<< std::endl;
     else {
-       ofl_structs_match_put_eth_m(&this->match, fields[name].first, value, mask);
+       ofl_structs_match_put_eth_m(&this->match, OXM_MAKE_WILD_HEADER(fields[name].first), value, mask);
     }
   }
  

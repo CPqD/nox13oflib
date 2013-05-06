@@ -79,6 +79,8 @@ EventDispatcherComponent::EventDispatcherComponent(const Context* c,
     register_event(Ofp_msg_event::get_name(OFPT_PACKET_IN));
     register_event(Ofp_msg_event::get_name(OFPT_FLOW_REMOVED));
     register_event(Ofp_msg_event::get_name(OFPT_PORT_STATUS));
+    register_event(Ofp_msg_event::get_name(OFPT_ROLE_REPLY));
+    register_event(Ofp_msg_event::get_name(OFPT_GET_ASYNC_REPLY));
     register_event(Ofp_msg_event::get_stats_name(OFPMP_DESC));
     register_event(Ofp_msg_event::get_stats_name(OFPMP_FLOW));
     register_event(Ofp_msg_event::get_stats_name(OFPMP_AGGREGATE));

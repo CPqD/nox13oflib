@@ -416,13 +416,18 @@ void ofl_structs_match_put_masked(struct ofl_match *match, uint32_t header, T va
     struct ofl_match_tlv *m = (struct ofl_match_tlv *) malloc(sizeof (struct ofl_match_tlv));
     int len = ((header) & 0xff);
 
+    m->header = header & 0xffffff00;
+
+    /*set the masked bit */
+    m->header |= 1 << 8;
+
     /* multiply the header len by 2 */
-    m->header = header;
-    m->value = (uint8_t*) malloc(len);
+    m->header |= ((header & 0xff) << 1);
+    m->value = (uint8_t*) malloc(len*2);    
     memcpy(m->value, &value, len/2);
     memcpy(m->value + len/2, &mask, len/2);
     hmap_insert(&match->match_fields,&m->hmap_node, hash_int(header, 0));
-    match->header.length += len + 4;
+    match->header.length += len * 2  + 4;
 }
 
 

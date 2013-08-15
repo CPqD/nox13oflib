@@ -124,7 +124,7 @@ Actions::CreateSetNwTTL(uint8_t nw_ttl){
 
 void 
 Actions::CreateSetMplsTTL(uint8_t mpls_ttl){
-    acts = (struct ofl_action_header**) xrealloc(acts, sizeof(struct ofl_action_header *) * act_num);
+    acts = (struct ofl_action_header**) xrealloc(acts, sizeof(struct ofl_action_header *) * (act_num +1));
     struct ofl_action_mpls_ttl *a = (struct ofl_action_mpls_ttl*) xmalloc(sizeof(struct ofl_action_mpls_ttl));
     a->mpls_ttl = mpls_ttl;
     acts[act_num] = (struct ofl_action_header*) a;

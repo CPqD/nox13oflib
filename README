@@ -8,7 +8,7 @@ OpenFlow 1.3 features and also to conform with previous messages that were
 modified in the new version. 
 
 Despite the fact that an easier API is available, still
-it's possible to send new messages using the the oflib, present on this NOX version.
+it's possible to send new messages using the oflib, present on this NOX version.
 The controller connects to the datapath without problems and an example application
 
 What is missing so far?
